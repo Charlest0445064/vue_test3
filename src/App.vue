@@ -1,17 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+     <div>
+       <div>
+         <button @click="Forward" >前進</button>
+         <button @click="Back" >後退</button>
+         <button @click="TestGo"   >前進或後退幾頁</button>
+
+
+       </div>
+      <div>
+        <router-link  :to="{name:'A'}">About</router-link>&nbsp;
+        <router-link  :to="{name:'H'}">Home</router-link>
+      </div>
+      <div>
+        <Banner/>
+      </div>
+      <div>
+        <router-view></router-view>
+      </div>
+     </div>
+       
+       
+       
+       
+     
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Banner from './components/Banner-Component.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Banner
+  },
+  methods:{
+      Forward(){
+         console.log(this.$router.forward());
+         this.$router.forward()
+      },
+      Back(){
+         console.log(this.$router.forward());
+         this.$router.back()
+      },
+      TestGo(){
+        this.$router.go(-2)
+      }
   }
 }
 </script>
